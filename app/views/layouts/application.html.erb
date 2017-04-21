@@ -9,6 +9,17 @@
   </head>
 
   <body>
+  <div>
+    <% if current_client %>
+      Welcome, <%= current_client.first_name %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to "Log Out", session_path('nil'), method: :delete %>
+    <% else %>
+      <%= link_to "Log In", login_path %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to "Sign Up", new_client_path %>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>

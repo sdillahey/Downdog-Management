@@ -1,0 +1,29 @@
+<div class="container">
+  <%= image_tag(@instructor.image, width: '500') %>
+</div>
+<div class="row">
+  <h3 class="text-center col-md-6"><%= @instructor.bio %></h3>
+</div>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Class</th>
+      <th>Sign Up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instructor.workouts.each do |workout| %>
+      <tr>
+        <td><%= workout.time.strftime("%I:%M") %></td>
+        <td><%= workout.name %></td>
+        <td><<button type="button"></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+  <div class="text-center col-md-6">
+    <%= link_to "Return to Instructors", instructors_path %>
+  </div>
+</div>

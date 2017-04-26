@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  helper_method :current_client
+  helper_method :current_user
 
-  def current_client
-    if session[:client_id]
-      @current_client ||= Client.find_by(id: session[:client_id])
+  def current_user
+    if session[:user_id]
+      @current_user ||= Client.find_by(id: session[:user_id])
     end
   end
 end

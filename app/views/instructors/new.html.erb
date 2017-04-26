@@ -1,0 +1,27 @@
+<h1>Add New Instructor</h1>
+
+<%= form_for @instructor do |f| %>
+  <% if @instructor.errors.any? %>
+    <div class="error_messages">
+      <h2>Error adding the instructor</h2>
+      <ul>
+        <% for message in @instructor.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+   <% end %>
+   <div class="field">
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+   </div>
+   <div class="field">
+     <%= f.label :image %>
+     <%= f.text_field :image %>
+   </div>
+   <div class="field">
+     <%= f.label :bio %>
+     <%= f.text_area :bio, size: "40x10" %>
+   </div>
+   <div class="actions"><%= f.submit %></div>
+<% end %>

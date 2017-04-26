@@ -1,8 +1,26 @@
 <h1>All Clients</h1>
 
-
-<ul>
-  <% @clients.each do |client| %>
-    <li> <%= client.last_name %>, <%= client.first_name %>
-  <% end %>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Mobile Number</th>
+      <th>Date Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each_with_index do |client, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= client.last_name %></td>
+        <td><%= client.first_name %></td>
+        <td><%= client.email %></td>
+        <td><%= client.mobile_number %></td>
+        <td><%= client.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

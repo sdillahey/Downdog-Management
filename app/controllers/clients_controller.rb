@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      session[:client_id] = @client.id
+      session[:user_id] = @client.id
       flash[:notice] = "Thanks for joining!"
       redirect_to clients_path
     else

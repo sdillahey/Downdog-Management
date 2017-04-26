@@ -1,0 +1,22 @@
+<h1>Class Schedule</h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Class</th>
+      <th>Instructor</th>
+      <th>Sign Up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= workout.time.strftime("%I:%M") %></td>
+        <td><%= workout.name %></td>
+        <td><%= workout.instructor %></td>
+        <td><<button type="button"></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

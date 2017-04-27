@@ -5,6 +5,7 @@
     <tr>
       <th>Time</th>
       <th>Class</th>
+      <th>Description</th>
       <th>Instructor</th>
       <th>Sign Up</th>
     </tr>
@@ -12,10 +13,11 @@
   <tbody>
     <% @workouts.each do |workout| %>
       <tr>
-        <td><%= workout.time.strftime("%I:%M") %></td>
+        <td><%= workout.time.strftime("%I:%M %P") %></td>
         <td><%= workout.name %></td>
-        <td><%= workout.instructor %></td>
-        <td><<button type="button"></button></td>
+        <td><%= workout.description %></td>
+        <td><%= workout.instructor.name %></td>
+        <td><% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
       </tr>
     <% end %>
   </tbody>

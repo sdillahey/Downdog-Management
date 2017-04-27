@@ -1,8 +1,12 @@
 
 <%= form_for @workout do |f| %>
- <div class="field">
+   <div class="field">
      <%= f.label :name %>
      <%= f.text_field :name %>
+   </div>
+   <div class="field">
+     <%= f.label :instructor_id %>
+     <%= f.collection_select(:instructor_id, Instructor.all, :id, :name, prompt: true) %>
    </div>
    <div class="field">
      <%= f.label :description %>

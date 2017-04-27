@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :admin_check, except: [:new, :create]
 
   def index
     @clients = Client.all

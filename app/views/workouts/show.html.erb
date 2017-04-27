@@ -1,16 +1,13 @@
-<div class="container">
-  <div class="text-center">
-    <%= image_tag(@instructor.image, width: '500') %>
-  </div>
-</div>
-<div class="row text-center">
-  <h3 width="col-md-6"><%= @instructor.bio %></h3>
-</div>
+<h1>Welcome to Down Dog Yoga</h1>
+
+
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
       <th>Time</th>
       <th>Class</th>
+      <th>Description</th>
+      <th>Instructor</th>
       <th>Sign Up</th>
     </tr>
   </thead>
@@ -19,13 +16,10 @@
       <tr>
         <td><%= workout.time.strftime("%I:%M %P") %></td>
         <td><%= workout.name %></td>
+        <td><%= workout.description %></td>
+        <td><%= workout.instructor.name %></td>
         <td><% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div class="row">
-  <div class="text-center">
-    <%= link_to "Return to Instructors", instructors_path %>
-  </div>
-</div>

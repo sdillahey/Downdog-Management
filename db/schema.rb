@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424222747) do
+ActiveRecord::Schema.define(version: 20170426182021) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name"
@@ -18,8 +21,9 @@ ActiveRecord::Schema.define(version: 20170424222747) do
     t.string   "email"
     t.string   "mobile_number"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "is_admin",        default: false
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -35,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170424222747) do
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_signups_on_client_id"
-    t.index ["workout_id"], name: "index_signups_on_workout_id"
+    t.index ["client_id"], name: "index_signups_on_client_id", using: :btree
+    t.index ["workout_id"], name: "index_signups_on_workout_id", using: :btree
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -46,7 +50,10 @@ ActiveRecord::Schema.define(version: 20170424222747) do
     t.datetime "time"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["instructor_id"], name: "index_workouts_on_instructor_id"
+    t.index ["instructor_id"], name: "index_workouts_on_instructor_id", using: :btree
   end
 
+  add_foreign_key "signups", "clients"
+  add_foreign_key "signups", "workouts"
+  add_foreign_key "workouts", "instructors"
 end

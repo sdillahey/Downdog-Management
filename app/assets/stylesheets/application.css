@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+.navbar-nav li a {
+  line-height: 100px;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+  background-image: none;
+}

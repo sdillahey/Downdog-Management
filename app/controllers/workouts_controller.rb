@@ -1,7 +1,12 @@
 class WorkoutsController < ApplicationController
+  before_action :admin_check, except: [:index, :show]
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.where("DATE(time - INTERVAL '7 hour') >= ?", Date.today).order("time ASC")
+  end
+
+  def show
+    @workouts = Workout.where("DATE(time - INTERVAL '7 hour') = ?", Date.today)
   end
 
   def new
@@ -16,6 +21,12 @@ class WorkoutsController < ApplicationController
     else
       render :new
     end
+  end
+
+  private
+
+  def workout_params
+    params.require(:workout).permit(:name, :instructor_id, :description, :time)
   end
 
 end

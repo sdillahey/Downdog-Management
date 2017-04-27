@@ -1,4 +1,6 @@
 class InstructorsController < ApplicationController
+  before_action :admin_check, except: [:index, :show]
+
 
   def index
     @instructors = Instructor.all
@@ -6,6 +8,7 @@ class InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find(params[:id])
+    @workouts = @instructor.workouts.where("DATE(time - INTERVAL '7 hour') >= ?", Date.today).order("time ASC")
   end
 
   def new

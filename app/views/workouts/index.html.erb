@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Class Schedule</h1>
 
 <table class="table table-hover table-responsive">
@@ -17,8 +18,13 @@
         <td><%= workout.name %></td>
         <td><%= workout.description %></td>
         <td><%= workout.instructor.name %></td>
-        <td><% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
+        <td><% if current_user %>
+              <% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
+            <% else %>
+              <% if workout.time > Time.now %><%= link_to '>', login_path, class: "btn btn-default btn-sm" %><% end %> </td>
+            <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>

@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     client = Client.find_by(email: params[:email])
     if client && client.authenticate(params[:password])
       session[:user_id] = client.id
-      redirect_to root_path, notice: "Logged in!"
+      if current_user && current_user.is_admin
+        redirect_to main_path
+      else
+        redirect_to root_path, notice: "Logged in!"
+      end
     else
       flash.now.alert = "Invalid login credentials"
       render :new

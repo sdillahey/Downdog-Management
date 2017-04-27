@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   resources :workouts, except: [:show, :edit, :update]
 
-  resources :sessions, only: [:new, :create, :destroy]
-
   get '/login', to: 'sessions#new'
 
   get '/classes', to: 'workouts#index'
@@ -18,6 +16,12 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'pages#show', page: 'contact'
 
+  get '/main', to: 'pages#main'
+
   post '/signups/:workout_id/:client_id', to: 'signups#create', as: :signup
+
+  get '/logout', to: 'sessions#destroy'
+
+  resources :sessions, only: [:new, :create, :destroy]
 
 end

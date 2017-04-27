@@ -17,7 +17,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     if @workout.save
       flash[:notice] = "Class added."
-      redirect_to classes_path
+      redirect_to main_path
     else
       render :new
     end

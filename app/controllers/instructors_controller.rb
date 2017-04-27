@@ -19,7 +19,7 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
       flash[:notice] = "Successfully added!"
-      redirect_to instructors_path
+      redirect_to main_path
     else
       render :new
     end

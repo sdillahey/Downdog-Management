@@ -23,10 +23,16 @@
 
 body {
   font-family: 'Open Sans Condensed', sans-serif;
+  font-size: medium;
 }
 
 .navbar {
   margin-bottom: 0px;
+}
+
+.navbar-default .navbar-text {
+  color: #000000;
+  text-transform: uppercase;
 }
 
 .navbar-nav li a {
@@ -37,9 +43,7 @@ body {
 
 .navbar-default .navbar-nav>li>a {
   color: #000000;
-  text-transform: uppercase;
 }
-
 
 .navbar-default {
   background-color: #ffffff;
@@ -50,4 +54,34 @@ body {
 background-image: url("homepage.jpg");
 background-size: cover;
 height: 100vh;
+}
+
+.btn-default {
+  font-weight: bold;
+  color: #084477
+}
+
+strong {
+  font-weight: bold;
+}
+
+.btn-main {
+  height: 90px;
+  color: black;
+}
+
+.btn-main h2 {
+    line-height: 80px;
+}
+
+.btn-instructors {
+  background-color: #9ab08f
+}
+
+.btn-workouts {
+  background-color: #c78484
+}
+
+.btn-clients {
+  background-color: #63a0c5
 }

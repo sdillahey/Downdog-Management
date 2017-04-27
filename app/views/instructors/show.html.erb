@@ -12,6 +12,7 @@
     <tr>
       <th>Time</th>
       <th>Class</th>
+      <th>Description</th>
       <th>Sign Up</th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= workout.time.strftime("%I:%M %P") %></td>
         <td><%= workout.name %></td>
+        <td><%= workout.description %></td>
         <td><td><% if current_user %>
               <% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
             <% else %>

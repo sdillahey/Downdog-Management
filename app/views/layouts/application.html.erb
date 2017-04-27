@@ -21,6 +21,8 @@
       </div>
       <div class="container-fluid">
       <div class="nav navbar-nav navbar-right">
+      <% if current_user && current_user.is_admin %><li><a href="/main">Main</a></li><% end %>
+        <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/workouts">Classes</a></li>
         <li><a href="/instructors">Instructors</a></li>

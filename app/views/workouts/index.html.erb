@@ -18,7 +18,9 @@
         <td><%= workout.name %></td>
         <td><%= workout.description %></td>
         <td><%= workout.instructor.name %></td>
-        <td><% if current_user %>
+        <td><% if current_user && current_user.workouts.exists?(workout) %>
+              <p>Signed Up</p>
+            <% elsif current_user %>
               <% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
             <% else %>
               <% if workout.time > Time.now %><%= link_to '>', login_path, class: "btn btn-default btn-sm" %><% end %> </td>

@@ -51,7 +51,7 @@ body {
 }
 
 .jumbotron {
-background-image: image-url("homepage.jpg");
+background-image: url("homepage.jpg");
 background-size: cover;
 height: 100vh;
 }
@@ -59,6 +59,15 @@ height: 100vh;
 .btn-default {
   font-weight: bold;
   color: #084477
+}
+
+.table-hd {
+  background-color: #929f9b;
+  box-shadow: -1px 2px 2px 1px rgba(45,59,55,1);
+}
+
+td p{
+    color: #084477
 }
 
 strong {
@@ -75,13 +84,17 @@ strong {
 }
 
 .btn-instructors {
-  background-color: #9ab08f
+  background-color: #9ab08f;
 }
 
 .btn-workouts {
-  background-color: #c78484
+  background-color: #c78484;
 }
 
 .btn-clients {
-  background-color: #63a0c5
+  background-color: #dfa45a;
+}
+
+.btn-classes {
+  background-color: #63a0c5;
 }

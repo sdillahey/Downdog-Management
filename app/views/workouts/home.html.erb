@@ -1,33 +1,28 @@
-<div class="container">
-<div class="container">
-  <div class="text-center">
-    <%= image_tag(@instructor.image, width: '500') %>
-  </div>
+<div class="jumbotron">
 </div>
-<div class="row text-center">
-  <h3 width="col-md-6"><%= @instructor.bio %></h3>
-</div>
+
+<div class="container">
+<h1>Welcome to Down Dog Yoga</h1>
+
+
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
       <th>Time</th>
       <th>Class</th>
       <th>Description</th>
+      <th>Instructor</th>
       <th>Sign Up</th>
     </tr>
   </thead>
   <tbody>
-  <% @save_date = nil %>
     <% @workouts.each do |workout| %>
-    <% if @save_date != workout.time.to_date %>
-        <% @save_date = workout.time.to_date %>
-        <tr><td class="table-hd" colspan="7"><%= @save_date.strftime("%A, %B %d") %> </td></tr>
-      <% end %>
       <tr>
         <td><%= workout.time.strftime("%I:%M %P") %></td>
         <td><%= workout.name %></td>
         <td><%= workout.description %></td>
-        <td><td><% if current_user && current_user.workouts.exists?(workout) %>
+        <td><%= workout.instructor.name %></td>
+        <td><% if current_user && current_user.workouts.exists?(workout) %>
               <p>&nbsp;&#10004;</p></td>
             <% elsif current_user %>
               <% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
@@ -38,9 +33,4 @@
     <% end %>
   </tbody>
 </table>
-<div class="row">
-  <div class="text-center">
-    <%= link_to "Return to Instructors", instructors_path %>
-  </div>
-</div>
 </div>

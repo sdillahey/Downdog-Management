@@ -4,22 +4,33 @@
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
+    <% if current_user && current_user.is_admin %><th>Edit</th><% end %>
+    <% if current_user && current_user.is_admin %><th>Clients</th><% end %>
       <th>Time</th>
       <th>Class</th>
       <th>Description</th>
       <th>Instructor</th>
-      <th>Sign Up</th>
+      <% if current_user && current_user.is_admin %><th>Delete</th><% else %><th>Sign Up</th><% end %>
     </tr>
   </thead>
   <tbody>
+  <% @save_date = nil %>
     <% @workouts.each do |workout| %>
+      <% if @save_date != workout.time.to_date %>
+        <% @save_date = workout.time.to_date %>
+        <tr><td class="table-hd" colspan="7"><%= @save_date.strftime("%A, %B %d") %> </td></tr>
+      <% end %>
       <tr>
+      <% if current_user && current_user.is_admin %><td><%= link_to 'Edit', edit_workout_path(workout) %></td><% end %>
+      <% if current_user && current_user.is_admin %><td><%= link_to 'Show', workout_path(workout) %></td><% end %>
         <td><%= workout.time.strftime("%I:%M %P") %></td>
         <td><%= workout.name %></td>
         <td><%= workout.description %></td>
         <td><%= workout.instructor.name %></td>
-        <td><% if current_user && current_user.workouts.exists?(workout) %>
-              <p>Signed Up</p>
+        <td><% if current_user && current_user.is_admin %>
+              <%= link_to 'Delete', workout_path(workout), method: :delete, data: { confirm: "Are you sure you want to delete this class?"} %></td>
+            <% elsif current_user && current_user.workouts.exists?(workout) %>
+              <p>&nbsp;&#10004;</p></td>
             <% elsif current_user %>
               <% if workout.time > Time.now %><%= link_to '>', signup_path(workout, current_user), method: :post, class: "btn btn-default btn-sm" %><% end %> </td>
             <% else %>

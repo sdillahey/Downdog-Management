@@ -50,3 +50,5 @@ As is typical of MVC, the controllers contain the code that acts as the intermed
 - Add a max-capacity attribute to the workout class model that will serve as a limit for the number of clients who can sign-up
 - Add functionality for the Admin to add recurring classes to the schedule
 - Provide an option for a client to access their account should they forget their password
+
+Administrator: admin@downdogyoga.com pw: ddyoga123

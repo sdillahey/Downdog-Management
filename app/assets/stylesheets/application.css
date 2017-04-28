@@ -14,6 +14,10 @@
  *= require_self
  */
 
+* {
+  border: 1px solid red;
+}
+
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: medium;
@@ -45,7 +49,8 @@ body {
 
 .jumbotron {
 background-size: cover;
-height: 80vh;
+height: 50vh;
+background-position: center;
 }
 
 .btn-default {

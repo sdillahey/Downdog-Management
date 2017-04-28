@@ -41,7 +41,10 @@ As is typical of MVC, the controllers contain the code that acts as the intermed
 - HTML5
 - CSS3
 - Ruby
+- Bootstrap
 - JQuery
+- Postgresql
+- ActiveRecord
 
 ### Upcoming Features:
 - Add a max-capacity attribute to the workout class model that will serve as a limit for the number of clients who can sign-up
